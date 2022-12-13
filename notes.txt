@@ -1,0 +1,27 @@
+npm init -y
+install serverless globally.
+sls create -t aws-nodejs
+
+
+serverless plugin install -n serverless-plugin-log-retention
+
+endpoint: POST - https://id.execute-api.region.amazonaws.com/dev/presigned
+
+
+for upload to s3 bucket
+
+First generate put token with file name.
+POST https://id.execute-api.region.amazonaws.com/dev/presigned
+body raw 
+{
+    "objectKey" : "put-object1.html",
+    "s3Action" : "putObject",
+    "contentType" : "text/html"
+}
+
+copy the generated code. 
+create a file with put-object1.html
+Run the below command. replace the last item with the copied generated code.
+
+command code.
+curl -k -H "Content-Type: text/html" -X PUT -T "put-object1.html" "https://bucket.amazonaws.com/put-object1.html?AWSAccessKeyId=sadfasdfasdf&Content-Type=text%2Fhtml&Expires=1670930395&Signature=dhnN59UhD%2F1UnGXAlv3GTWwAIwY%3D&x-amz-security-token=IQoJb3JpZ2luX2VjEJT%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJHMEUCIDzbB8rJvtSN7xF28%2FdTgjRUknzPVqgZNQ5JYbg6hgGTAiEA%2F5pzghzcozJuRMo2uQ8DBHboeYja43RVBmvyPmNB4zcqhwMIvP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARADGgw0MjgyMTkyNTYzNzkiDNWrEb4pEya3nustiirbAn0zB8S%2Fc45LT24jukIgAPYOHhfPtYEGVYshVkyQmLQ2kdsTmc1GndzUd7nfO3Mk516q4TY1vRUdYbeYmbH%2FfBWqy1fSR6pBbqfvBPpeI%2FMSqrVFOOdbZ7TCbgugvWlh9uVPjpKogfwYzvLjNXhB4SypMX1RIdL4asO6UqJd8cQDCwJWgynOkuOaIaFPGtd2rQL%2FiGB%2B80L%2BXDBsdDdz0M1XPCMeRYkvYLav6iPmOtJLLKT000zRoi2zzxBeNIraRnzHeKIkUaxvgfqLJcwStb8TumOR8uKMUteidPheNvH2AYAz5GtDwPuQ7uHIULSBPETEsQGGNysuYfl%2FyZzXYlhKcjdgI1I6OVmuzvD7SlCBGhkz36Fev16g3FfSCXQa6K82N3ACJDEKzRqFzwSy7YWUzyKp1Xx55qw4Bqd6tgWFnWzqg9iyAJYmwB424wdj6DiCVZOCzDeTwQ5oMK694ZwGOp4B0naoq%2FVPGH4L2IVilpiv7AQbDFh9L9pbnycUai1scZo5Bl2eboBbSB%2FXkaBUk%2F5qWGL%2FzEGcBcBn20Y3J15bk2VqbplARHFEpqdXUcsS5UXhu%2B6DPib%2FpAPvAaU3y9uz%2Fkdz%2BKm4RrufIrn3%2B%2F9pdsVKX02KOqLmrsuKE461dXdkh4mzYv6%2Byb%2FixOt2EDalf2iHvTyadYdnuelfp9I%3D"
